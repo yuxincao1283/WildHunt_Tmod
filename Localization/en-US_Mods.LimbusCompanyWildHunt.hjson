@@ -1,0 +1,17 @@
+Items: {
+	WildHunt: {
+		DisplayName: Wild Hunt
+		Tooltip: ""
+	}
+
+	customSword: {
+		DisplayName: custom Sword
+		Tooltip: ""
+	}
+}
+
+Projectiles: {
+	WildHuntSwing.DisplayName: Wild Hunt Swing
+	WildHuntS1_1.DisplayName: Wild Hunt S1_1
+	WildHuntS1_2.DisplayName: Wild Hunt S1_2
+}
