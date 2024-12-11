@@ -14,4 +14,7 @@ Projectiles: {
 	WildHuntSwing.DisplayName: Wild Hunt Swing
 	WildHuntS1_1.DisplayName: Wild Hunt S1_1
 	WildHuntS1_2.DisplayName: Wild Hunt S1_2
+	LowerSlash.DisplayName: Lower Slash
+	Pierce.DisplayName: Pierce
+	UpperSlash.DisplayName: Upper Slash
 }

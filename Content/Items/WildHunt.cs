@@ -12,17 +12,17 @@ using Terraria.GameContent.Creative;
 using LimbusCompanyWildHunt.Content.Projectiles;
 
 
+
 namespace LimbusCompanyWildHunt.Content.Items 
 {
     public class WildHunt : ModItem 
     {
-        
-        private int maxType = 2;
         private int fixedAttackType = -1;
         private int attackType = 0; // keeps track of which attack it is
-        private int stage = 0;
+        private int currentStage = 3;
+        private int stage = 3;
 		private int comboExpireTimer = 0; // we want the attack pattern to reset if the weapon is not used for certain period of time
-        
+
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100; // How many items need for research in Journey Mode
@@ -53,46 +53,66 @@ namespace LimbusCompanyWildHunt.Content.Items
             Item.noUseGraphic = true; // This makes sure the item does not get shown when the player swings his hand
 
             // Projectile Properties
-			Item.shoot = ModContent.ProjectileType<WildHuntS1_1>(); // The sword as a projectile
+			Item.shoot = ModContent.ProjectileType<UpperSlash>(); // The sword as a projectile
         }
-
-
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
 			// Using the shoot function, we override the swing projectile to set ai[0] (which attack it is)
-            // Projectile.NewProjectile(source, player.Center, ShootVel, ModContent.ProjectileType<TwilightStrike>(), (int)(TwilightData.StrikeDamage * damage), knockback, player.whoAmI);
-
             Projectile.NewProjectile(source, position, velocity, GenerateSwing(attackType), damage, knockback, Main.myPlayer);
 
 			comboExpireTimer = 0; // Every time the weapon is used, we reset this so the combo does not expire
-
-            attackType = (attackType+1)%maxType;
+            attackType = (attackType+1)%currentStage;
 
 			return false; // return false to prevent original projectile from being shot
 		}
-
+        
         private int GenerateSwing(int attackType)
         {
             if(fixedAttackType != -1)
                 attackType = fixedAttackType;
 
             // return ModContent.ProjectileType<WildHuntS1_1>();
+            switch(stage)
+            {
+                case 0:
+                    return generateSkill_1(attackType);
+                default:
+                    return generateSkill_2(attackType);
 
+                                      // case 2:
+                    //     return ModContent.ProjectileType<LowerSlash>();
+            }
+        
+        }
+        private int generateSkill_2(int attackType)
+        {
             switch(attackType)
             {
-                case 0: 
-                    return ModContent.ProjectileType<WildHuntS1_1>();
+                case 0:
+                    return ModContent.ProjectileType<LowerSlash>();   
                 case 1:
-                    return ModContent.ProjectileType<WildHuntS1_2>();
+                    return ModContent.ProjectileType<UpperSlash>();   
+                default:
+                    return ModContent.ProjectileType<Pierce>();
             }
-
-            return 0;
         }
+
+        private int generateSkill_1(int attackType)
+        {
+            switch(attackType)
+            {
+                case 0:
+                    return ModContent.ProjectileType<UpperSlash>();   
+                default:
+                    return ModContent.ProjectileType<Pierce>();
+            }
+        }
+
 
         public override void UpdateInventory(Player player) {
 			if (comboExpireTimer++ >= 120) // after 120 ticks (== 2 seconds) in inventory, reset the attack pattern
 			{
                 attackType = 0;
-                stage = 0;
+                stage = currentStage;
             }	
 		}
 
@@ -109,5 +129,7 @@ namespace LimbusCompanyWildHunt.Content.Items
         //     recipe.AddTile(TileID.Anvils); // Crafting station we need for craft, WorkBenches, Anvils etc. You can find them here - https://terraria.wiki.gg/wiki/Tile_IDs
         //     recipe.Register();
         // }
+
+        
     }
 }

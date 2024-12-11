@@ -32,12 +32,6 @@ namespace LimbusCompanyWildHunt
 
         public static void playSound(string soundName)
         {
-
-            // string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-			// string searchDirectory = resDir + directory;
-
-
-            // SoundStyle weaponSound = new SoundStyle(resDir + $"Projectiles/Sound/" + soundName);
 			SoundEngine.PlaySound(new SoundStyle(resDir + $"Projectiles/Sound/" + soundName));
         }
 
@@ -54,5 +48,24 @@ namespace LimbusCompanyWildHunt
 			}
             return textureVector;
         }
+        
+        //lights
+        //Lighting.AddLight(projectile.Center, 1f, 1f, 0f)
+
+        // public static void setHandPos(float frontHandOffset, float offHandOffset, float rotation, Player Owner, int spriteDirection)
+        // {
+        //     if(spriteDirection > 0)
+        //     {
+        //         Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation - MathHelper.ToRadians(90f) - frontHandOffset); // set arm position (90 degree offset since arm starts lowered)
+        //         Owner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Quarter , rotation - MathHelper.ToRadians(75f) - offHandOffset);
+        //     }
+        //     else
+        //     {
+        //         Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation - MathHelper.ToRadians(90f) + frontHandOffset); // set arm position (90 degree offset since arm starts lowered)
+        //         Owner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Quarter , rotation - MathHelper.ToRadians(75f) + offHandOffset);
+        //     }
+                        
+        // }
+      
     }
 }
