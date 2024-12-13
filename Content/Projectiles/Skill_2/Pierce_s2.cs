@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace LimbusCompanyWildHunt.Content.Projectiles
 {
-	public class Pierce : ModProjectile
+	public class Pierce_s2 : ModProjectile
 	{
 		
 		private const float SWINGRANGE = (float) Math.PI; // The angle a swing attack covers (300 deg)
@@ -42,16 +42,13 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 		// We define timing functions for each stage, taking into account melee attack speed
 		// Note that you can change this to suit the need of your projectile
 		// private float prepTime => 12f / Owner.GetTotalAttackSpeed(Projectile.DamageType);
-		private float chargeTime => 20 / Owner.GetTotalAttackSpeed(Projectile.DamageType);
-		private float execTime => 40 / Owner.GetTotalAttackSpeed(Projectile.DamageType);
+		private float chargeTime => 20f / Owner.GetTotalAttackSpeed(Projectile.DamageType);
+		private float execTime => 50f / Owner.GetTotalAttackSpeed(Projectile.DamageType);
 		public override string Texture => "LimbusCompanyWildHunt/Content/Items/WildHunt"; // Use texture of item as projectile textureE
 		private Texture2D normalTexture = ModContent.Request<Texture2D>("LimbusCompanyWildHunt/Content/Projectiles/Texture/WildHunt_Weapon").Value;
         private Player Owner => Main.player[Projectile.owner];
 
         private Helper.textureInfo[] projectileInfo = new Helper.textureInfo[3];
-
-        private const int vfxHeight = 215;
-		private const int vfxWidth = 522;
 		private int frameIdx = 0;
 		private int maxFrame = 0;
 		private int basetime = 0;
@@ -134,7 +131,6 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 			
 			Projectile.rotation = InitialAngle;
 
-            Helper.playSound("wildheath_1_2-1");
 		}
 
 		public override void SendExtraAI(BinaryWriter writer) {

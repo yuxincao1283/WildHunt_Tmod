@@ -8,6 +8,11 @@ Items: {
 		DisplayName: custom Sword
 		Tooltip: ""
 	}
+
+	DullahanItem: {
+		DisplayName: Dullahan Item
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -17,4 +22,7 @@ Projectiles: {
 	LowerSlash.DisplayName: Lower Slash
 	Pierce.DisplayName: Pierce
 	UpperSlash.DisplayName: Upper Slash
+	LowerSlash_s2.DisplayName: Lower Slash_s2
+	Pierce_s2.DisplayName: Pierce_s2
+	UpperSlash_s2.DisplayName: Upper Slash_s2
 }

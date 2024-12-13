@@ -69,9 +69,9 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 			Projectile.ownerHitCheck = true; // Make sure the owner of the projectile has line of sight to the target (aka can't hit things through tile).
 			Projectile.DamageType = DamageClass.Melee; // Projectile is a melee 
 			
-			projectileInfo[0] = new Helper.textureInfo(700, 700, new List<Texture2D>{blackedTexture}, 0.8f);
-			projectileInfo[1] = new Helper.textureInfo(878, 496, Helper.loadVfxFolder("UpperSlash/", 578, 594), 3f);
-			projectileInfo[2] = new Helper.textureInfo(700, 700, new List<Texture2D>{normalTexture}, 0.8f);
+			projectileInfo[0] = new Helper.textureInfo(700, 700, new List<Texture2D>{blackedTexture}, 0.55f);
+			projectileInfo[1] = new Helper.textureInfo(878, 496, Helper.loadVfxFolder("UpperSlash/", 578, 594), 2.5f);
+			projectileInfo[2] = new Helper.textureInfo(700, 700, new List<Texture2D>{normalTexture}, 0.55f);
 			
 			// upperSlash = Helper.loadVfxFolder("UpperSlash/", 578, 594);
 		}
@@ -151,8 +151,8 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 			}
 			else
 			{
-				drawSingle(lightColor, 115, 130, -130, 2);
-				drawSprite(Color.White, 350, 270, -25, 1);
+				drawSingle(lightColor, 55, 70, -130, 2);
+				drawSprite(Color.White, 335, 275, -25, 1);
 
 				// drawSingleTmp(ref lightColor, 115, 130, 50, 2);
 				// drawSpriteTmp(ref lightColor, 350, 270, 155, 1);

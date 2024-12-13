@@ -6,8 +6,9 @@ Recreated WildHunt from Limbus Company in Terraria
 Progress
 
     Skill 1: Completed
-    Skill 2: vfx done
+    Skill 2: Swing animation completed, wolf projectile not completed
     Skill 3: Not started
+    O-DULLAHAN!!!!: NOt started IDK HOW TO ANIMATE CAN SOMEBODY HELP 
     Coffin: Not Started
     Transformation: Not started
     Parry: Not Started

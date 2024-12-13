@@ -8,22 +8,24 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System.Collections.Generic;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
+
 
 namespace LimbusCompanyWildHunt.Content.Projectiles
 {
-	public class Pierce : ModProjectile
+	public class UpperSlash_s2 : ModProjectile
 	{
-		
-		private const float SWINGRANGE = (float) Math.PI; // The angle a swing attack covers (300 deg)
+		private int frameIdx = 0;
+		private int maxFrame = 0;
+		private int basetime = 0;
+		private int remainder = 0;
 		private enum AttackStage // What stage of the attack is being executed, see functions found in AI for description
 		{
-			Charge,
 			Execute,
-			Pause
 		}
 
-		// These properties wrap the usual ai and localAI arrays for cleaner and easier to understand code.
-		private AttackStage CurrentStage {
+        // These properties wrap the usual ai and localAI arrays for cleaner and easier to understand code.
+        private AttackStage CurrentStage {
 			get => (AttackStage)Projectile.localAI[0];
 			set {
 				Projectile.localAI[0] = (float)value;
@@ -36,32 +38,20 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 		// Variables to keep track of during runtime
 		private ref float InitialAngle => ref Projectile.ai[1]; // Angle aimed in (with constraints)
 		private ref float Timer => ref Projectile.ai[2]; // Timer to keep track of progression of each stage
-		private ref float Progress => ref Projectile.localAI[1]; // Position of sword relative to initial angle
 		private ref float Size => ref Projectile.localAI[2]; // Size of sword
 
 		// We define timing functions for each stage, taking into account melee attack speed
 		// Note that you can change this to suit the need of your projectile
 		// private float prepTime => 12f / Owner.GetTotalAttackSpeed(Projectile.DamageType);
-		private float chargeTime => 20 / Owner.GetTotalAttackSpeed(Projectile.DamageType);
-		private float execTime => 40 / Owner.GetTotalAttackSpeed(Projectile.DamageType);
-		public override string Texture => "LimbusCompanyWildHunt/Content/Items/WildHunt"; // Use texture of item as projectile textureE
+		private float execTime => 35f / Owner.GetTotalAttackSpeed(Projectile.DamageType);		public override string Texture => "LimbusCompanyWildHunt/Content/Items/WildHunt"; // Use texture of item as projectile textureE
 		private Texture2D normalTexture = ModContent.Request<Texture2D>("LimbusCompanyWildHunt/Content/Projectiles/Texture/WildHunt_Weapon").Value;
-        private Player Owner => Main.player[Projectile.owner];
+		private Texture2D blackedTexture = ModContent.Request<Texture2D>("LimbusCompanyWildHunt/Content/Projectiles/Texture/WildHunt_Weapon_Blacked").Value;
+		private Player Owner => Main.player[Projectile.owner];
+		private Helper.textureInfo[] projectileInfo = new Helper.textureInfo[3];
 
-        private Helper.textureInfo[] projectileInfo = new Helper.textureInfo[3];
-
-        private const int vfxHeight = 215;
-		private const int vfxWidth = 522;
-		private int frameIdx = 0;
-		private int maxFrame = 0;
-		private int basetime = 0;
-		private int remainder = 0;
-		private float armAngleOffset = 0;
-		private float maxArmAngle = MathHelper.ToRadians(45);
         public override void SetStaticDefaults() {
 			ProjectileID.Sets.HeldProjDoesNotUsePlayerGfxOffY[Type] = true;
 		}
-
         public override void SetDefaults() {
 			Projectile.width = 700; // Hitbox width of projectile
 			Projectile.height = 700; // Hitbox height of projectile
@@ -73,10 +63,12 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 			Projectile.localNPCHitCooldown = -1; // We set this to -1 to make sure the projectile doesn't hit twice
 			Projectile.ownerHitCheck = true; // Make sure the owner of the projectile has line of sight to the target (aka can't hit things through tile).
 			Projectile.DamageType = DamageClass.Melee; // Projectile is a melee 
-
-            projectileInfo[0] = new Helper.textureInfo(700, 700, new List<Texture2D>{normalTexture}, 0.55f);
-            projectileInfo[1] = new Helper.textureInfo(1101, 590, Helper.loadVfxFolder("Pierce/", 369, 387), 1.7f);
-            // projectileInfo[2] = new Helper.textureInfo(552, 215, new List<Texture2D>{executeTexture});
+			
+			projectileInfo[0] = new Helper.textureInfo(700, 700, new List<Texture2D>{blackedTexture}, 0.55f);
+			projectileInfo[1] = new Helper.textureInfo(878, 496, Helper.loadVfxFolder("UpperSlash/", 578, 594), 2.5f);
+			projectileInfo[2] = new Helper.textureInfo(700, 700, new List<Texture2D>{normalTexture}, 0.55f);
+			
+			// upperSlash = Helper.loadVfxFolder("UpperSlash/", 578, 594);
 		}
 
 		public override void AI() {
@@ -90,17 +82,9 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 				return;
 			}
 
-			// AI depends on stage and attack
-			// Note that these stages are to facilitate the scaling effect at the beginning and end
-			// If this is not desirable for you, feel free to simplify
-			switch (CurrentStage) {
-				case AttackStage.Charge:
-					ChargeStrike();
-					break;
-				case AttackStage.Execute:
-					ExecuteStrike();
-					break;
-			}
+
+			ExecuteStrike();
+
 
 			SetSwordPosition();
 			Timer++;
@@ -116,27 +100,30 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 
 			
 		}
+
 		public override void OnSpawn(IEntitySource source) {
 			Projectile.spriteDirection = Main.MouseWorld.X > Owner.MountedCenter.X ? 1 : -1;
 			
 			Size = 0.65f;
 
 			InitialAngle = (Main.MouseWorld - Owner.MountedCenter).ToRotation();
-			
-            if(Projectile.spriteDirection > 0)
-            {
-                InitialAngle -= MathHelper.ToRadians(90); 
-            }
-            else
-            {
-                InitialAngle += MathHelper.ToRadians(90);
-            }
-			
+
+			if(Projectile.spriteDirection > 0)
+			{
+				InitialAngle -= MathHelper.ToRadians(15);
+			}
+			else
+			{
+				InitialAngle += MathHelper.ToRadians(15);
+			}
+				
 			Projectile.rotation = InitialAngle;
 
-            Helper.playSound("wildheath_1_2-1");
-		}
+			setFrameInfo();
 
+			Helper.playSound("wildheath_2_3");
+
+		}
 		public override void SendExtraAI(BinaryWriter writer) {
 			// Projectile.spriteDirection for this projectile is derived from the mouse position of the owner in OnSpawn, as such it needs to be synced. spriteDirection is not one of the fields automatically synced over the network. All Projectile.ai slots are used already, so we will sync it manually. 
 			writer.Write((sbyte)Projectile.spriteDirection);
@@ -148,17 +135,16 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 
 
 		public override bool PreDraw(ref Color lightColor) {
-            if(CurrentStage == AttackStage.Charge){
-                drawSingle(lightColor, 10, 10, 90, 0);
-            }
-            else{
-				drawSingle(lightColor, 50, 50, 30, 0);
-				drawSprite(Color.White, 230, 280, -15, 1);
-            }
+			drawSingle(lightColor, 55, 70, -130, 2);
+			drawSprite(Color.White, 335, 275, -25, 1);
+
+			// drawSingleTmp(ref lightColor, 115, 130, 50, 2);
+			// drawSpriteTmp(ref lightColor, 350, 270, 155, 1);
+
 			// Since we are doing a custom draw, prevent it from normally drawing
 			return false;
 		}
-
+		// private void drawSprite(ref Color lightColor, int xOffset, int yOffset, int angleOffset, int renderIndex)
 		private void drawSprite(Color lightColor, int xOffset, int yOffset, int angleOffset, int renderIndex)
 		{
 			// Calculate origin of sword (hilt) based on orientation and offset sword rotation (as sword is angled in its sprite)
@@ -166,6 +152,7 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 			float rotationOffset;
 			SpriteEffects effects;
             
+
             int projWidth = projectileInfo[renderIndex].X;
             int projHeight = projectileInfo[renderIndex].Y;
 
@@ -173,15 +160,20 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 				origin = new Vector2(xOffset, projHeight-yOffset);
 				rotationOffset = MathHelper.ToRadians(45 + angleOffset);
 				effects = SpriteEffects.None;
+				Owner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.None, -0.4f);
 			}
 			else {
 				origin = new Vector2(projWidth - xOffset, projHeight - yOffset);
 				rotationOffset = MathHelper.ToRadians(135 - angleOffset);
 				effects = SpriteEffects.FlipHorizontally;
+				Owner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.None, 0.4f);
 			}	
 			// Texture2D texture = TextureAssets.Projectile[Type].Value;
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
+
+			// Lighting.AddLight(origin, new Vector3(67.8f, 0.8f, 93.7f));
+			Lighting.AddLight(origin + Projectile.Center, Color.DarkViolet.ToVector3());
 
 			//draw slash effect 
 			Main.spriteBatch.Draw(
@@ -211,15 +203,17 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 				origin = new Vector2(xOffset, projHeight-yOffset);
 				rotationOffset = MathHelper.ToRadians(45 + angleOffset);
 				effects = SpriteEffects.None;
+				Owner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.None, -0.4f);
 			}
 			else {
 				origin = new Vector2(projWidth - xOffset, projHeight - yOffset);
 				rotationOffset = MathHelper.ToRadians(135 - angleOffset);
 				effects = SpriteEffects.FlipHorizontally;
+				Owner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.None, 0.4f);
 			}	
 			// Texture2D texture = TextureAssets.Projectile[Type].Value;
-			// Main.spriteBatch.End();
-			// Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
 			//draw slash effect 
 
 			Main.spriteBatch.Draw(
@@ -234,8 +228,100 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 				0f
 			);
 		}
+		private void drawSpriteTmp(ref Color lightColor, int xOffset, int yOffset, int angleOffset, int renderIndex)
+		{
+			// Calculate origin of sword (hilt) based on orientation and offset sword rotation (as sword is angled in its sprite)
+			Vector2 origin;
+			float rotationOffset;
+			SpriteEffects effects;
+            
+			float rotation = (Main.MouseWorld - Owner.MountedCenter).ToRotation();
 
-        // // // Find the start and end of the sword and use a line collider to check for collision with enemies
+            int projWidth = projectileInfo[renderIndex].X;
+            int projHeight = projectileInfo[renderIndex].Y;
+
+			if (Projectile.spriteDirection > 0) {
+				origin = new Vector2(xOffset, projHeight-yOffset);
+				rotationOffset = MathHelper.ToRadians(45 + angleOffset);
+				effects = SpriteEffects.None;
+				Owner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.None, -0.4f);
+
+				rotation += MathHelper.ToRadians(165);
+			}
+			else {
+				origin = new Vector2(projWidth - xOffset, projHeight - yOffset);
+				rotationOffset = MathHelper.ToRadians(135 - angleOffset);
+				effects = SpriteEffects.FlipHorizontally;
+				Owner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.None, 0.4f);
+
+				rotation -= MathHelper.ToRadians(165);
+			}	
+			// Texture2D texture = TextureAssets.Projectile[Type].Value;
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
+
+			// Lighting.AddLight(origin, new Vector3(67.8f, 0.8f, 93.7f));
+			Lighting.AddLight(origin, 1f, 1f, 1f);
+
+			//draw slash effect 
+			Main.spriteBatch.Draw(
+				projectileInfo[renderIndex].texture[frameIdx], 
+				Projectile.Center - Main.screenPosition, 
+				default, 
+				Color.White * Projectile.Opacity, 
+				rotation + rotationOffset, 
+				origin, 
+				Projectile.scale * projectileInfo[renderIndex].Scale, 
+				effects,
+				0f
+			);
+		}
+		private void drawSingleTmp(ref Color lightColor, int xOffset, int yOffset, int angleOffset, int renderIndex)
+		{
+			// Calculate origin of sword (hilt) based on orientation and offset sword rotation (as sword is angled in its sprite)
+			Vector2 origin;
+			float rotationOffset;
+			SpriteEffects effects;
+            
+			float rotation = (Main.MouseWorld - Owner.MountedCenter).ToRotation();
+
+            int projWidth = projectileInfo[renderIndex].X;
+            int projHeight = projectileInfo[renderIndex].Y;
+
+			if (Projectile.spriteDirection > 0) {
+				origin = new Vector2(xOffset, projHeight-yOffset);
+				rotationOffset = MathHelper.ToRadians(45 + angleOffset);
+				effects = SpriteEffects.None;
+				Owner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.None, -0.4f);
+
+				rotation += MathHelper.ToRadians(165);
+			}
+			else {
+				origin = new Vector2(projWidth - xOffset, projHeight - yOffset);
+				rotationOffset = MathHelper.ToRadians(135 - angleOffset);
+				effects = SpriteEffects.FlipHorizontally;
+				Owner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.None, 0.4f);
+
+				rotation -= MathHelper.ToRadians(165);
+			}	
+			// Texture2D texture = TextureAssets.Projectile[Type].Value;
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
+			//draw slash effect 
+
+			Main.spriteBatch.Draw(
+				projectileInfo[renderIndex].texture[0], 
+				Projectile.Center - Main.screenPosition, 
+				default, 
+				Color.White * Projectile.Opacity, 
+				rotation + rotationOffset, 
+				origin, 
+				Projectile.scale * projectileInfo[renderIndex].Scale, 
+				effects,
+				0f
+			);
+		}
+        // // // // Find the start and end of the sword and use a line collider to check for collision with enemies
         // public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) {
 		// 	Vector2 start = Owner.MountedCenter;
 		// 	Vector2 end = start + Projectile.rotation.ToRotationVector2() * ((Projectile.Size.Length()) * Projectile.scale);
@@ -256,94 +342,35 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 			modifiers.HitDirectionOverride = target.position.X > Owner.MountedCenter.X ? 1 : -1;
 		}
 
-
 		// Function to easily set projectile and arm position
-		public void SetSwordPosition() {   
+		public void SetSwordPosition() {
 			// Set composite arm allows you to set the rotation of the arm and stretch of the front and back arms independently
-			Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.ThreeQuarters, Projectile.rotation - MathHelper.ToRadians(90f) + armAngleOffset); // set arm position (90 degree offset since arm starts lowered)
-			Owner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Quarter , Projectile.rotation - MathHelper.ToRadians(75f) + armAngleOffset);
-
+			Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.ToRadians(90f)); // set arm position (90 degree offset since arm starts lowered)
+			
 			// Owner.front
 			Vector2 armPosition = Owner.GetFrontHandPosition(Player.CompositeArmStretchAmount.Full, Projectile.rotation - (float)Math.PI / 2); // get position of hand
+			
 			armPosition.Y += Owner.gfxOffY;
-
-            if(CurrentStage == AttackStage.Charge)
-            {
-                float rotationOffset = MathHelper.ToRadians(90);
-                float xVector, yVector;
-
-                if(Projectile.spriteDirection > 0)
-                {
-                    xVector = (float) Math.Cos(InitialAngle - rotationOffset);
-                    yVector = (float) Math.Sin(InitialAngle - rotationOffset);
-                }
-                else
-                {
-                    xVector = (float) Math.Cos(InitialAngle + rotationOffset);
-                    yVector = (float) Math.Sin(InitialAngle + rotationOffset);
-                }
-
-                //change armposition by progress
-                armPosition.X += Progress * xVector;
-                armPosition.Y += Progress * yVector;
-            }
 
 			Projectile.Center = armPosition; // Set projectile to arm position
 
 			Projectile.scale = 0.7f * Size * Owner.GetAdjustedItemScale(Owner.HeldItem); // Slightly scale up the projectile and also take into account melee size modifiers
 
-			Owner.heldProj = Projectile.whoAmI; // set held projectile to this projectile
-		}
-		private int chargeOffset = 70;
-
-		public void ChargeStrike() {
-
-            Progress = MathHelper.SmoothStep(0, chargeOffset, Timer / chargeTime);
-
-			armAngleOffset = MathHelper.SmoothStep(0, maxArmAngle, Timer/chargeTime) * (Projectile.spriteDirection > 0 ? -1 : 1);
-
-			if (Timer >= chargeTime) {
-
-                if(Projectile.spriteDirection > 0)
-                {
-                    InitialAngle += MathHelper.ToRadians(60); 
-                }
-                else
-                {
-                    InitialAngle -= MathHelper.ToRadians(60);
-                }
-
-				Projectile.rotation = InitialAngle;
-
-                Helper.playSound("wildheath_1_2-2");
-
-				armAngleOffset = 0;
-
-				CurrentStage = AttackStage.Execute;
-			}
-		}
-
-		private void ExecuteStrike() {
-			// Progress = MathHelper.SmoothStep(0, SWINGRANGE, (1f - UNWIND) * Timer / execTime);
-			if (Timer >= execTime) {
-				Projectile.Kill();
-			}
+			// Owner.heldProj = Projectile.whoAmI; // set held projectile to this projectile
 		}
 
 		private void setFrameInfo()
 		{
-			switch(CurrentStage)
-			{
-				case AttackStage.Charge:
-					maxFrame = projectileInfo[0].texture.Count;
-					basetime = (int) Math.Floor(chargeTime/maxFrame);
-					remainder = maxFrame - (int) Math.Round(chargeTime % maxFrame);
-					break;
-				case AttackStage.Execute:
-					maxFrame = projectileInfo[1].texture.Count;
-					basetime = (int) Math.Floor(execTime/maxFrame);
-					remainder = maxFrame - (int) Math.Round(execTime % maxFrame);
-					break;
+
+			maxFrame = projectileInfo[1].texture.Count;
+			basetime = (int) Math.Floor(execTime/maxFrame);
+			remainder = maxFrame - (int) Math.Round(execTime % maxFrame);
+		}
+
+		private void ExecuteStrike() {
+
+			if (Timer >= execTime) {
+				Projectile.Kill();
 			}
 		}
     }

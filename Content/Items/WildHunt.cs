@@ -73,7 +73,7 @@ namespace LimbusCompanyWildHunt.Content.Items
             // return ModContent.ProjectileType<WildHuntS1_1>();
             switch(stage)
             {
-                case 0:
+                case 2:
                     return generateSkill_1(attackType);
                 default:
                     return generateSkill_2(attackType);
@@ -88,11 +88,11 @@ namespace LimbusCompanyWildHunt.Content.Items
             switch(attackType)
             {
                 case 0:
-                    return ModContent.ProjectileType<LowerSlash>();   
+                    return ModContent.ProjectileType<LowerSlash_s2>();   
                 case 1:
-                    return ModContent.ProjectileType<UpperSlash>();   
+                    return ModContent.ProjectileType<UpperSlash_s2>();   
                 default:
-                    return ModContent.ProjectileType<Pierce>();
+                    return ModContent.ProjectileType<Pierce_s2>();
             }
         }
 
