@@ -19,8 +19,8 @@ namespace LimbusCompanyWildHunt.Content.Items
     {
         private int fixedAttackType = -1;
         private int attackType = 0; // keeps track of which attack it is
-        private int currentStage = 3;
-        private int stage = 3;
+        private int stage = 2;
+        private int stageChange = 0;
 		private int comboExpireTimer = 0; // we want the attack pattern to reset if the weapon is not used for certain period of time
 
         public override void SetStaticDefaults()
@@ -55,17 +55,43 @@ namespace LimbusCompanyWildHunt.Content.Items
             // Projectile Properties
 			Item.shoot = ModContent.ProjectileType<UpperSlash>(); // The sword as a projectile
         }
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
 			// Using the shoot function, we override the swing projectile to set ai[0] (which attack it is)
-            Projectile.NewProjectile(source, position, velocity, GenerateSwing(attackType), damage, knockback, Main.myPlayer);
+            // Projectile.NewProjectile(source, position, velocity, GenerateSwing(attackType), damage, knockback, Main.myPlayer);
 
+            GenerateSwing(source, position, velocity, damage, knockback);
+
+            // if(stage == 3 && attackType == 2)
+            // {
+                //generate wolf
+            // 
+            // }
 			comboExpireTimer = 0; // Every time the weapon is used, we reset this so the combo does not expire
-            attackType = (attackType+1)%currentStage;
+            attackType = (attackType+1)%stage;
+
+            if(stage == 3 && attackType == 0)
+            {
+                stageChange = 0;
+                stage = 2;
+            }
+            else if(attackType == 0)
+            {
+                stageChange++;
+            }
+
+            if(stageChange == 2)
+            {
+                stage = 3;
+            }
 
 			return false; // return false to prevent original projectile from being shot
 		}
         
-        private int GenerateSwing(int attackType)
+        private void GenerateSwing(EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int damage, float knockback)
         {
             if(fixedAttackType != -1)
                 attackType = fixedAttackType;
@@ -74,36 +100,48 @@ namespace LimbusCompanyWildHunt.Content.Items
             switch(stage)
             {
                 case 2:
-                    return generateSkill_1(attackType);
+                    generateSkill_1(source, position, velocity, damage, knockback);
+                    return;
                 default:
-                    return generateSkill_2(attackType);
+                    generateSkill_2(source, position, velocity, damage, knockback);
+                    return;
 
                                       // case 2:
                     //     return ModContent.ProjectileType<LowerSlash>();
             }
         
         }
-        private int generateSkill_2(int attackType)
+        private void generateSkill_2(EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int damage, float knockback)
         {
             switch(attackType)
             {
                 case 0:
-                    return ModContent.ProjectileType<LowerSlash_s2>();   
+                    Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<LowerSlash_s2>(), damage, knockback, Main.myPlayer);   
+                    return;  
                 case 1:
-                    return ModContent.ProjectileType<UpperSlash_s2>();   
+                    Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<UpperSlash_s2>(), damage, knockback, Main.myPlayer);   
+   
+                    return;
                 default:
-                    return ModContent.ProjectileType<Pierce_s2>();
+
+                    Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<Pierce_s2>(), damage, knockback, Main.myPlayer);
+                    Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<PierceVfx_s2>(), damage, knockback, Main.myPlayer);
+                    Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<WolfProj>(), damage, knockback, Main.myPlayer);
+ 
+                    return;
             }
         }
 
-        private int generateSkill_1(int attackType)
+        private void generateSkill_1(EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int damage, float knockback)
         {
             switch(attackType)
             {
                 case 0:
-                    return ModContent.ProjectileType<UpperSlash>();   
+                    Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<UpperSlash>(), damage, knockback, Main.myPlayer);   
+                    return;
                 default:
-                    return ModContent.ProjectileType<Pierce>();
+                    Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<Pierce>(), damage, knockback, Main.myPlayer);   
+                    return;
             }
         }
 
@@ -112,7 +150,7 @@ namespace LimbusCompanyWildHunt.Content.Items
 			if (comboExpireTimer++ >= 120) // after 120 ticks (== 2 seconds) in inventory, reset the attack pattern
 			{
                 attackType = 0;
-                stage = currentStage;
+                stage = 2;
             }	
 		}
 

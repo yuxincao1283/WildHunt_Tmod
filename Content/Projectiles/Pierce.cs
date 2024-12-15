@@ -294,7 +294,7 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 
 			Owner.heldProj = Projectile.whoAmI; // set held projectile to this projectile
 		}
-		private int chargeOffset = 70;
+		private int chargeOffset = 40;
 
 		public void ChargeStrike() {
 

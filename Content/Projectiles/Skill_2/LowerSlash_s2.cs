@@ -54,7 +54,7 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 		// We define timing functions for each stage, taking into account melee attack speed
 		// Note that you can change this to suit the need of your projectile
 		// private float prepTime => 12f / Owner.GetTotalAttackSpeed(Projectile.DamageType);
-		private float chargeTime => 4f / Owner.GetTotalAttackSpeed(Projectile.DamageType);	
+		private float chargeTime => 20f / Owner.GetTotalAttackSpeed(Projectile.DamageType);	
 		private float execTime => 35f / Owner.GetTotalAttackSpeed(Projectile.DamageType);			
          public override string Texture => "LimbusCompanyWildHunt/Content/Items/WildHunt"; // Use texture of item as projectile textureE
 		private Texture2D normalTexture = ModContent.Request<Texture2D>("LimbusCompanyWildHunt/Content/Projectiles/Texture/WildHunt_Weapon").Value;
@@ -142,7 +142,7 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 			Projectile.rotation = InitialAngle;
 
             setFrameInfo(getTime(CurrentStage));
-			Helper.playSound("wildheath_1_2-2");
+			
 		}
 		public override void SendExtraAI(BinaryWriter writer) {
 			// Projectile.spriteDirection for this projectile is derived from the mouse position of the owner in OnSpawn, as such it needs to be synced. spriteDirection is not one of the fields automatically synced over the network. All Projectile.ai slots are used already, so we will sync it manually. 
@@ -323,6 +323,8 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 				}
 
 				Projectile.rotation = InitialAngle;
+
+				Helper.playSound("wildheath_1_2-2");
 			}
 		}
 

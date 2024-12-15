@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LimbusCompanyWildHunt")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae9c22905add434944de84d83d9a6a76096bce1d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5eec8828ca8f27070999382096e5073d40e682a1")]
 [assembly: System.Reflection.AssemblyProductAttribute("LimbusCompanyWildHunt")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LimbusCompanyWildHunt")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -25,4 +25,6 @@ Projectiles: {
 	LowerSlash_s2.DisplayName: Lower Slash_s2
 	Pierce_s2.DisplayName: Pierce_s2
 	UpperSlash_s2.DisplayName: Upper Slash_s2
+	WolfProj.DisplayName: Wolf Proj
+	PierceVfx_s2.DisplayName: Pierce Vfx_s2
 }
