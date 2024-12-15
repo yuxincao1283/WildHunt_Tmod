@@ -149,6 +149,7 @@ namespace LimbusCompanyWildHunt.Content.Items
         public override void UpdateInventory(Player player) {
 			if (comboExpireTimer++ >= 120) // after 120 ticks (== 2 seconds) in inventory, reset the attack pattern
 			{
+                stageChange = 0;
                 attackType = 0;
                 stage = 2;
             }	
