@@ -1,17 +1,29 @@
 recreated wildhunt from limbus company.
 
+Not multiplayer compatible 
+
+多人玩不了 暂时没加中文简介
+碰撞箱太gb费时间 不想做了 暂时也不修了。
+先吧三技能和背后的棺材写出来
+
+fuck hitboxes, too much effort for now, i'll get back to it later
+i'll work on the coffin for now. 
+
+after that it'd be multiplayer compatibility then finally hit boxes. 
+
 WildHunt_Tmod
 
 Recreated WildHunt from Limbus Company in Terraria
 Progress
 
     Skill 1: Completed - Hitbox unfixed
-    Skill 2: Completed - Hitbox unfixed
+    Skill 2: Completed - Hitbox unfixed - disappear effect for third coin
     Skill 3: Not started
     O-DULLAHAN!!!!: NOt started IDK HOW TO ANIMATE CAN SOMEBODY HELP 
-    Coffin: Not Started
+    Coffin: Finished!!! with CHAINS 
     Transformation: Not started
     Parry: Not Started
 
 
-I do not own any of the sprites or vfx used in the mod.
+I do not own any of the sprites or vfx used in the mod.[quote=tModLoader LimbusCompanyWildHunt]
+Developed By RikuDola[/quote]

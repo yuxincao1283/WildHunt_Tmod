@@ -202,8 +202,9 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 		public void SetSwordPosition() {   
 			// Owner.front
 			Vector2 armPosition = Owner.GetFrontHandPosition(Player.CompositeArmStretchAmount.Full, Projectile.rotation - (float)Math.PI / 2); // get position of hand
+			
 			armPosition.Y += Owner.gfxOffY;
-
+		
             armPosition.X += xCenterOffset;
             armPosition.Y += yCenterOffset;
 
@@ -229,10 +230,6 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 		private float xCenterOffset = 0;
 		private float yCenterOffset = 0;
 		private void ExecuteStrike() {
-			// xCenterOffset = xCenterOffset * (float) Math.Cos(angleRadians);
-			// yCenterOffset = yCenterOffset * (float) Math.Sin(angleRadians);
-			// 		// projOffset[i] = MathHelper.SmoothStep(-300 * i, projMaxOffset - 300 * i, Timer / execTime);
-
 			if (Timer >= execTime) {
 				Projectile.Kill();
 			}

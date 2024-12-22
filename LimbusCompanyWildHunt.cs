@@ -11,20 +11,32 @@ namespace LimbusCompanyWildHunt
 	public class LimbusCompanyWildHunt : Mod
 	{
 		
-		// public static Effect appearEffect;
+		public static Effect appearEffect;
 		public static List<Texture2D> upperSlash;
+		public static List<Texture2D> lowerSlash;
+		public static List<Texture2D> pierce;
+		public static Texture2D normalTexture;
+		public static Texture2D blackedTexture;
 		public List<Texture2D> Pierce;
+		public static Texture2D ChainIdleTexture;
+		public static Texture2D CoffinIdleTexture;
 		//load sprites
 		public override void Load()
 		{
-			// SkyManager.Instance
+			// appearEffect = ModContent.Request<Effect>("LimbusCompanyWildHunt/Effects/Content/appear", AssetRequestMode.ImmediateLoad).Value;
+			// normalTexture = ModContent.Request<Texture2D>("LimbusCompanyWildHunt/Content/Projectiles/Texture/WildHunt_Weapon", AssetRequestMode.ImmediateLoad).Value;
+			
 			// Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++");
-			// upperSlash = loadVfxFolder("UpperSlash/", 578, 594);
+			// upperSlash = Helper.loadVfxFolder("UpperSlash/", 578, 594);
 			// upperSlash = loadVfxFolder("Pierce/", 369, 387);
 			// appearEffect = ModContent.Request<Effect>(
 			// 	"LimbusCompanyWildHunt/Content/Effects/Content/appear", 
 			// 	AssetRequestMode.ImmediateLoad).Value;
 			// GetEffect("Effects/GrayScale");
+
+			ChainIdleTexture = ModContent.Request<Texture2D>("LimbusCompanyWildHunt/Content/Projectiles/Texture/leftChain", AssetRequestMode.ImmediateLoad).Value;
+			CoffinIdleTexture = ModContent.Request<Texture2D>("LimbusCompanyWildHunt/Content/Projectiles/Texture/BackSlot_Coffin", AssetRequestMode.ImmediateLoad).Value;
+
 			Console.WriteLine("loading vfx");
 		}
 

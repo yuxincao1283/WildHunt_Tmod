@@ -27,4 +27,17 @@ Projectiles: {
 	UpperSlash_s2.DisplayName: Upper Slash_s2
 	WolfProj.DisplayName: Wolf Proj
 	PierceVfx_s2.DisplayName: Pierce Vfx_s2
+	Pierce_s1.DisplayName: Pierce_s1
+	PierceVfx_s1.DisplayName: Pierce Vfx_s1
+	UpperSlash_s1.DisplayName: Upper Slash_s1
+	UpperSlashVfx_s2.DisplayName: Upper Slash Vfx_s2
+	UpperSlashVfx_s1.DisplayName: Upper Slash Vfx_s1
+	BackSlot_Coffin.DisplayName: Back Slot_ Coffin
+	Coffin_Idle.DisplayName: Coffin_ Idle
+	CoffinProjectile.DisplayName: Coffin Projectile
+	ChainIdle.DisplayName: Chain Idle
+	CoffinIdle.DisplayName: Coffin Idle
+	CoffinHitbox.DisplayName: Coffin Hitbox
+	CoffinCharge.DisplayName: Coffin Charge
+	ChainCharge.DisplayName: Chain Charge
 }
