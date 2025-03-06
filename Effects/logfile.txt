@@ -1,0 +1,156 @@
+Message at 2025/3/6 2:44:31: Importing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:44:31: Processing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 2:44:31: Compiling Content\appear.xnb
+Message at 2025/3/6 2:44:31: Importing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:44:31: Processing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 2:44:31: Compiling Content\blackfadein.xnb
+Message at 2025/3/6 2:44:31: Importing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:44:31: Processing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 2:44:31: Compiling Content\flash.xnb
+Message at 2025/3/6 2:44:31: Importing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:44:31: Processing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Warning at 2025/3/6 2:44:31: Warning compiling C:\Users\mynam\Documents\My Games\Terraria\tModLoader\ModSources\LimbusCompanyWildHunt\Effects\greyscale_threshold.fx: warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+Message at 2025/3/6 2:44:31: Compiling Content\greyscale_threshold.xnb
+Message at 2025/3/6 2:44:40: Importing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:44:40: Processing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 2:44:40: Compiling Content\appear.xnb
+Message at 2025/3/6 2:44:40: Importing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:44:40: Processing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 2:44:40: Compiling Content\blackfadein.xnb
+Message at 2025/3/6 2:44:40: Importing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:44:40: Processing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 2:44:40: Compiling Content\flash.xnb
+Message at 2025/3/6 2:44:40: Importing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:44:40: Processing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Warning at 2025/3/6 2:44:40: Warning compiling C:\Users\mynam\Documents\My Games\Terraria\tModLoader\ModSources\LimbusCompanyWildHunt\Effects\greyscale_threshold.fx: warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+Message at 2025/3/6 2:44:40: Compiling Content\greyscale_threshold.xnb
+Message at 2025/3/6 2:46:44: Importing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:46:44: Processing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 2:46:44: Compiling Content\appear.xnb
+Message at 2025/3/6 2:46:44: Importing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:46:44: Processing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 2:46:44: Compiling Content\blackfadein.xnb
+Message at 2025/3/6 2:46:44: Importing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:46:44: Processing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 2:46:44: Compiling Content\flash.xnb
+Message at 2025/3/6 2:46:44: Importing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:46:44: Processing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Warning at 2025/3/6 2:46:44: Warning compiling C:\Users\mynam\Documents\My Games\Terraria\tModLoader\ModSources\LimbusCompanyWildHunt\Effects\greyscale_threshold.fx: warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+Message at 2025/3/6 2:46:44: Compiling Content\greyscale_threshold.xnb
+Message at 2025/3/6 2:50:49: Importing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:50:49: Processing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 2:50:49: Compiling Content\appear.xnb
+Message at 2025/3/6 2:50:49: Importing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:50:49: Processing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 2:50:49: Compiling Content\blackfadein.xnb
+Message at 2025/3/6 2:50:49: Importing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:50:49: Processing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 2:50:49: Compiling Content\flash.xnb
+Message at 2025/3/6 2:50:49: Importing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:50:49: Processing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Warning at 2025/3/6 2:50:49: Warning compiling C:\Users\mynam\Documents\My Games\Terraria\tModLoader\ModSources\LimbusCompanyWildHunt\Effects\greyscale_threshold.fx: warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+Message at 2025/3/6 2:50:49: Compiling Content\greyscale_threshold.xnb
+Message at 2025/3/6 2:51:51: Importing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:51:51: Processing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 2:51:51: Compiling Content\appear.xnb
+Message at 2025/3/6 2:51:51: Importing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:51:51: Processing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 2:51:51: Compiling Content\blackfadein.xnb
+Message at 2025/3/6 2:51:51: Importing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:51:51: Processing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 2:51:51: Compiling Content\flash.xnb
+Message at 2025/3/6 2:51:51: Importing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 2:51:51: Processing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Warning at 2025/3/6 2:51:51: Warning compiling C:\Users\mynam\Documents\My Games\Terraria\tModLoader\ModSources\LimbusCompanyWildHunt\Effects\greyscale_threshold.fx: warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+Message at 2025/3/6 2:51:51: Compiling Content\greyscale_threshold.xnb
+Message at 2025/3/6 3:14:14: Importing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:14:14: Processing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 3:14:14: Compiling Content\appear.xnb
+Message at 2025/3/6 3:14:14: Importing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:14:14: Processing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 3:14:14: Compiling Content\blackfadein.xnb
+Message at 2025/3/6 3:14:14: Importing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:14:14: Processing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 3:14:14: Compiling Content\flash.xnb
+Message at 2025/3/6 3:14:14: Importing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:14:14: Processing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Warning at 2025/3/6 3:14:14: Warning compiling C:\Users\mynam\Documents\My Games\Terraria\tModLoader\ModSources\LimbusCompanyWildHunt\Effects\greyscale_threshold.fx: warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+Message at 2025/3/6 3:14:14: Compiling Content\greyscale_threshold.xnb
+Message at 2025/3/6 3:19:02: Importing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:19:02: Processing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 3:19:02: Compiling Content\appear.xnb
+Message at 2025/3/6 3:19:02: Importing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:19:02: Processing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 3:19:02: Compiling Content\blackfadein.xnb
+Message at 2025/3/6 3:19:02: Importing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:19:02: Processing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 3:19:02: Compiling Content\flash.xnb
+Message at 2025/3/6 3:19:02: Importing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:19:02: Processing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Warning at 2025/3/6 3:19:02: Warning compiling C:\Users\mynam\Documents\My Games\Terraria\tModLoader\ModSources\LimbusCompanyWildHunt\Effects\greyscale_threshold.fx: warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+Message at 2025/3/6 3:19:02: Compiling Content\greyscale_threshold.xnb
+Message at 2025/3/6 3:22:16: Importing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:22:16: Processing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 3:22:16: Compiling Content\appear.xnb
+Message at 2025/3/6 3:22:16: Importing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:22:16: Processing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 3:22:16: Compiling Content\blackfadein.xnb
+Message at 2025/3/6 3:22:16: Importing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:22:16: Processing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 3:22:16: Compiling Content\flash.xnb
+Message at 2025/3/6 3:22:16: Importing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:22:16: Processing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Warning at 2025/3/6 3:22:16: Warning compiling C:\Users\mynam\Documents\My Games\Terraria\tModLoader\ModSources\LimbusCompanyWildHunt\Effects\greyscale_threshold.fx: warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+Message at 2025/3/6 3:22:16: Compiling Content\greyscale_threshold.xnb
+Message at 2025/3/6 3:26:27: Importing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:26:27: Processing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 3:26:27: Compiling Content\appear.xnb
+Message at 2025/3/6 3:26:27: Importing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:26:27: Processing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 3:26:27: Compiling Content\blackfadein.xnb
+Message at 2025/3/6 3:26:27: Importing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:26:27: Processing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 3:26:27: Compiling Content\flash.xnb
+Message at 2025/3/6 3:26:27: Importing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:26:27: Processing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Warning at 2025/3/6 3:26:27: Warning compiling C:\Users\mynam\Documents\My Games\Terraria\tModLoader\ModSources\LimbusCompanyWildHunt\Effects\greyscale_threshold.fx: warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+Message at 2025/3/6 3:26:27: Compiling Content\greyscale_threshold.xnb
+Message at 2025/3/6 3:28:17: Importing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:28:17: Processing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 3:28:17: Compiling Content\appear.xnb
+Message at 2025/3/6 3:28:17: Importing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:28:17: Processing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 3:28:17: Compiling Content\blackfadein.xnb
+Message at 2025/3/6 3:28:17: Importing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:28:17: Processing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 3:28:17: Compiling Content\flash.xnb
+Message at 2025/3/6 3:28:17: Importing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 3:28:17: Processing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Warning at 2025/3/6 3:28:17: Warning compiling C:\Users\mynam\Documents\My Games\Terraria\tModLoader\ModSources\LimbusCompanyWildHunt\Effects\greyscale_threshold.fx: warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+Message at 2025/3/6 3:28:17: Compiling Content\greyscale_threshold.xnb
+Message at 2025/3/6 15:53:41: Importing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 15:53:41: Processing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 15:53:41: Compiling Content\appear.xnb
+Message at 2025/3/6 15:53:41: Importing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 15:53:41: Processing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 15:53:41: Compiling Content\blackfadein.xnb
+Message at 2025/3/6 15:53:41: Importing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 15:53:41: Processing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 15:53:41: Compiling Content\flash.xnb
+Message at 2025/3/6 15:53:41: Importing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 15:53:41: Processing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Warning at 2025/3/6 15:53:41: Warning compiling C:\Users\mynam\Documents\My Games\Terraria\tModLoader\ModSources\LimbusCompanyWildHunt\Effects\greyscale_threshold.fx: warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+Message at 2025/3/6 15:53:41: Compiling Content\greyscale_threshold.xnb
+Message at 2025/3/6 15:56:13: Importing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 15:56:13: Processing appear.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 15:56:13: Compiling Content\appear.xnb
+Message at 2025/3/6 15:56:13: Importing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 15:56:13: Processing blackfadein.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 15:56:13: Compiling Content\blackfadein.xnb
+Message at 2025/3/6 15:56:13: Importing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 15:56:13: Processing flash.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/6 15:56:13: Compiling Content\flash.xnb
+Message at 2025/3/6 15:56:13: Importing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/6 15:56:13: Processing greyscale_threshold.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Warning at 2025/3/6 15:56:13: Warning compiling C:\Users\mynam\Documents\My Games\Terraria\tModLoader\ModSources\LimbusCompanyWildHunt\Effects\greyscale_threshold.fx: warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+Message at 2025/3/6 15:56:13: Compiling Content\greyscale_threshold.xnb

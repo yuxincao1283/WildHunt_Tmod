@@ -40,4 +40,7 @@ Projectiles: {
 	CoffinHitbox.DisplayName: Coffin Hitbox
 	CoffinCharge.DisplayName: Coffin Charge
 	ChainCharge.DisplayName: Chain Charge
+	Lightning.DisplayName: Lightning
+	LightningCapture.DisplayName: Lightning Capture
+	CoffinProjectile_cpy.DisplayName: Coffin Projectile_cpy
 }

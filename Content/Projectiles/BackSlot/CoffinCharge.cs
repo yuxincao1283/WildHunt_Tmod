@@ -164,6 +164,8 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 
 			if(Timer >= prepareTime)
 			{
+				Projectile.NewProjectile(Projectile.GetSource_FromThis() , Owner.position, Projectile.velocity, ModContent.ProjectileType<CoffinProjectile>(), Projectile.damage, 0, Projectile.owner);
+            
 				Projectile.Kill();
 			}
 		}

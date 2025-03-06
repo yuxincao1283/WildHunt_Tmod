@@ -4,8 +4,13 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Creative;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
+
+using Vector2=Microsoft.Xna.Framework.Vector2;
+
 using LimbusCompanyWildHunt.Content.Projectiles;
-using System.Threading;
+using LimbusCompanyWildHunt.Content.Projectiles.Lightning;
 
 namespace LimbusCompanyWildHunt.Content.Items 
 {
@@ -18,6 +23,9 @@ namespace LimbusCompanyWildHunt.Content.Items
         private int stageChange = 0;
 		private int comboExpireTimer = 0; // we want the attack pattern to reset if the weapon is not used for certain period of time
 
+
+        public static bool coffinCaught = false;
+        public static NPC caughtNpc = null;
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100; // How many items need for research in Journey Mode
@@ -65,12 +73,15 @@ namespace LimbusCompanyWildHunt.Content.Items
             // Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<BackSlot_Coffin>(), damage, knockback, Main.myPlayer);
 
             Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CoffinHitbox>(), damage, knockback, Main.myPlayer);
-            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CoffinProjectile>(), damage, knockback, Main.myPlayer);
+            // Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CoffinProjectile>(), damage, knockback, Main.myPlayer);
             
-            // Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CoffinCharge>(), damage, knockback, Main.myPlayer);
-            // Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ChainCharge>(), damage, knockback, Main.myPlayer);
+            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CoffinCharge>(), damage, knockback, Main.myPlayer);
+            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ChainCharge>(), damage, knockback, Main.myPlayer);
            
-
+            // Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<LightningCapture>(), damage, knockback, Main.myPlayer);
+            //todo:
+            //purple glow in the eyes, get more vfx
+            //turn charge into actual charge`
             // GenerateSwing(source, position, velocity, damage, knockback);
 
 			comboExpireTimer = 0; // Every time the weapon is used, we reset this so the combo does not expire

@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
+using System.Timers;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -22,7 +24,10 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 		private enum AttackStage
 		{
 			Execute,
-			Retract
+			Retract,
+			OnHit,
+			Smash,
+			Throw
 		}
 
         private AttackStage CurrentStage {
@@ -61,6 +66,11 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 			Projectile.rotation = InitialAngle;
 		}
 
+		private float execTime => 30f / Owner.GetTotalAttackSpeed(Projectile.DamageType);
+		private float retractTime => 7f / Owner.GetTotalAttackSpeed(Projectile.DamageType);
+		private float onhitTime => 40f / Owner.GetTotalAttackSpeed(Projectile.DamageType);
+		private float smashTime => 40f / Owner.GetTotalAttackSpeed(Projectile.DamageType);
+		private float throwTime => 40f / Owner.GetTotalAttackSpeed(Projectile.DamageType);
 
 		public override void AI() {
 			// Extend use animation until projectile is killed
@@ -81,11 +91,38 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 				case AttackStage.Execute:
 					executeStrike();			
 					break;
+				case AttackStage.Retract:
+					Projectile.friendly = true;
+					if(Timer >= retractTime)
+					{
+						CurrentStage = AttackStage.OnHit;
+					}
+					break;
+				case AttackStage.OnHit:
+					if(Timer >= onhitTime)
+					{
+						CurrentStage = AttackStage.Smash;
+					}
+					break;
+				case AttackStage.Smash:
+					if(Timer >= smashTime)
+					{
+						CurrentStage = AttackStage.Throw;
+					}
+					break;
+				case AttackStage.Throw:
+					if(Timer >= throwTime)
+					{
+						WildHunt.coffinCaught = false;
+						WildHunt.caughtNpc = null;
+						Projectile.Kill();
+					}
+					break;
 			}
+
 
 			Timer++;
 		}
-		private float execTime => 30f / Owner.GetTotalAttackSpeed(Projectile.DamageType);
 		private float xPosOffset = 65;
 		private float xMaxPosOffset = 745;
 		private void executeStrike()
@@ -109,21 +146,24 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 
 			if(Timer >= execTime)
 			{
-				Projectile.Kill();
+				CurrentStage = AttackStage.Retract;
 			}
 		}
 
-		public static bool caught = false;
-
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-			if(caught)
-				return;
+			if(CurrentStage == AttackStage.Execute)
+			{
+				if(WildHunt.coffinCaught)
+					return;
+				WildHunt.caughtNpc = target;
+				WildHunt.coffinCaught = true;
+			}
+			else
+			{
+				//kill projectile after damaging
 
-			caught = true;
-
-			//get npc info
-            
+			}           
         }
 
 
@@ -138,6 +178,15 @@ namespace LimbusCompanyWildHunt.Content.Projectiles
 
 		public override bool PreDraw(ref Color lightColor) {
             // drawSingle(lightColor, 54, -88, 0);
+
+			// Redraw player and projectile at the top most layer instead
+			// Main.spriteBatch.End();
+			// Main.spriteBatch.Begin(SpriteSortMode.Immediate, )
+			if(CurrentStage != AttackStage.Smash)
+				return false;
+
+
+
 
 
 			return false;
